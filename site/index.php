@@ -38,7 +38,7 @@ include("class/security.php");
     <div class="container-fluid">
         <nav class="navbar fixed-top navbar-expand-sm nav-fill navbar-dark bg-primary" aria-label="Base">
             <div class="container-fluid">
-                <a class="navbar-brand" href="."><i class="fas fa-parking"></i>Plantilla</a>
+                <a class="navbar-brand" href="."><i class="fas fa-parking"></i>&nbsp;Plantilla</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
