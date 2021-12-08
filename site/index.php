@@ -1,5 +1,17 @@
 <?php
-include("class/security.php");
+    //include("class/security.php");
+
+	error_reporting(0);
+	
+	// Start button configuration
+    $BOTONES_NAVEGACION = "
+		<div class='col-md-12' align='center'>
+			<div class='btn-group btn-group-sm'>
+				<a class='btn btn-success' href='https://www.cmw.smcsalud.cu' role='button'>Web SMC</a>
+				<a type='button' class='btn btn-warning' href='class\logout.php'>Logout [" . $_SESSION["user"] . "]</a>
+			</div>
+		</div>";
+	// Finish button configuration
 ?>
 
 <!doctype html>
@@ -14,7 +26,7 @@ include("class/security.php");
     <!-- Finish required meta tags for Bootstrap -->
 
     <link rel="icon" href="../img/favicon.svg">
-    <title>Plantilla</title>
+    <title>Tarifario de Precios</title>
 
     <!-- Start of links to CSS files -->
     <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
@@ -35,96 +47,37 @@ include("class/security.php");
 
 <body>
     <!-- Start navbar -->
-    <div class="container-fluid">
-        <nav class="navbar fixed-top navbar-expand-sm nav-fill navbar-dark bg-primary" aria-label="Base">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="."><i class="fas fa-parking"></i>&nbsp;Plantilla</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbars">
-                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Menu 1</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 2</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 3</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 4</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Menu 2</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 2</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 3</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 4</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Menu 3</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 2</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 3</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 4</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Menu 4</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 2</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 3</a></li>
-                                <li><a class="dropdown-item text-dark" href='#'>opcion 4</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <span class="navbar-text">
-                        <a class="dropdown-toggle quitar-espacios" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"><?php echo ucfirst($_SESSION['name']); ?></a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-dark" href='#'>opcion 1</a></li>
-                            <li><a class="dropdown-item text-dark" href='#'>opcion 2</a></li>
-                            <li><a class="dropdown-item text-dark" href='#'>opcion 3</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item text-dark" href='class/logout.php'><i class="fas fa-sign-out-alt "></i>&nbsp;Logout</a></li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-        </nav>
+    <div class="container">
+        <div align="center">
+            <!-- Header start -->
+            <div class="row">
+                <div class="col" align="center"><i class="fas fa-money-check-alt fa-8x text-success"></i></div>
+            </div>	
+            
+            <div class="fs-3 text-secondary">Tarifario de precios</div>
+            <div align="center" style="font-size:20px">&nbsp;</div>
+            <!-- Header end -->
+        </div>
     </div>
     <!-- Finish navbar -->
 
     <!-- Start space between navbar and body -->
-    <div align="center" style="font-size:40px">&nbsp;</div>
+    <div align="center" style="font-size:20px">&nbsp;</div>
     <!-- Finish space between navbar and body -->
 
     <!-- Start body -->
     <div class="container">
-        <div class="fs-3 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, similique velit laudantium mollitia quos amet? Ipsum ex amet, voluptatibus odio soluta cumque magnam qui officia, perferendis ab quo. Cumque, aliquam?</div>
+        <div align="center" class="fs-2 text-secondary">En construcci&oacute;n</div>
+        <br>
+        <div class="col" align="center"><i class="fas fa-tools fa-10x text-warning"></i></div>
     </div>
     <!-- Finish body -->
+
+    <!-- Start footer -->
+    <div id="footer">
+        <?php echo $BOTONES_NAVEGACION; ?>
+    </div>
+    <!-- Footer end -->
 </body>
 
 </html>
