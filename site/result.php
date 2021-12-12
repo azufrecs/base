@@ -3,24 +3,40 @@
     include ("conn/conn.php");
 	error_reporting(0);
 
+    $COD1OK=0;
+    $COD2OK=0;
+    $COD3OK=0;
+
     if(isset($_GET['cod1'])){
         $COD1 = $_GET['cod1'];
-        $QUERY_TITULO1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 WHERE codigo='$COD1'");
+        $QUERY_TITULO1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 WHERE cod1='$COD1'");
         while($row = $QUERY_TITULO1->fetch_assoc()) 
 		{
 		$SUBNIVEL1_TITULO = $row['descripcion'];
 		}
+        $COD1OK=1;
     } else {
         echo"<script>window.location.href='head1.php'; </script>";
     }
     
     if(isset($_GET['cod2'])){
         $COD2 = $_GET['cod2'];
-        $QUERY_TITULO2 = $mysqli->query("SELECT * FROM tbl_encabezado_2 WHERE codigo_padre='$CODE1' AND codigo='$COD2'");
+        $QUERY_TITULO2 = $mysqli->query("SELECT * FROM tbl_encabezado_2 WHERE cod1='$COD1' AND cod2='$COD2'");
         while($row = $QUERY_TITULO2->fetch_assoc()) 
 		{
 		$SUBNIVEL2_TITULO = $row['descripcion'];
 		}
+        $COD2OK=1;
+    }
+
+    if(isset($_GET['cod3'])){
+        $COD3 = $_GET['cod3'];
+        $QUERY_TITULO3 = $mysqli->query("SELECT * FROM tbl_encabezado_3 WHERE cod1='$COD1' AND cod2='$COD2' AND cod3='$COD3'");
+        while($row = $QUERY_TITULO3->fetch_assoc()) 
+		{
+		$SUBNIVEL3_TITULO = $row['descripcion'];
+		}
+        $COD3OK=1;
     }
 
 	// Start button configuration
@@ -82,15 +98,20 @@
             <!-- Body start -->
             <div class="row" align="center">
                 <?php 
-                    if(isset($_GET['cod1']) && isset($_GET['cod2'])){
-                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong>&nbsp;->&nbsp;" . $SUBNIVEL2_TITULO . "</div>";
-                    } else {
-                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong></div>";
+                    switch ($COD1OK + $COD2OK + $COD3OK) {
+                        case "1":
+                            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong></div>";
+                            break;
+                        case "2":
+                            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong>&nbsp;->&nbsp;" . $SUBNIVEL2_TITULO . "</div>";
+                            break;
+                        case "3":
+                            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong>&nbsp;->&nbsp;" . $SUBNIVEL2_TITULO . "&nbsp;->&nbsp;" . $SUBNIVEL3_TITULO . "</div>";
+                            break;		
                     }
                 ?>
             </div>
             
- 
             <!-- Body end -->
 
             <!-- Start footer -->
