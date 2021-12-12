@@ -13,7 +13,7 @@
 		</div>";
 	// Finish button configuration
 
-    $LISTA_ENCABEZADO_1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 ORDER BY codigo");
+    $LISTA_ENCABEZADO_1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 ORDER BY cod1");
 ?>
 
 <!doctype html>
@@ -61,18 +61,54 @@
             
             <!-- Body start -->
             <div class="row" align="center">
-                <div class="col-sm"></div>
+                <?php 
+					// Comprobando si el servicio seleccionado tiene subnivel
+					if(isset($_POST['head1']))
+					{
+						$CODE = $_POST['cboEncabezado1'];
+                        $QUERY_SUBNIVEL = $mysqli->query("SELECT * FROM tbl_encabezado_1 WHERE cod1='$CODE'");
+            			while($row = $QUERY_SUBNIVEL->fetch_assoc()) 
+			            {
+				           $SUBNIVEL = $row['subnivel'];
+			            }
+                        if ($SUBNIVEL == "S"){
+                            echo"<script>window.location.href='head2.php?cod1=$CODE'; </script>";
+                        } else {
+                            echo"<script>window.location.href='result.php?cod1=$CODE'; </script>";
+                        }
+					}
+				?>
 
-                <div class="col-md-8" align="justify">
-                    <div class="fs-4 text-secondary">Mediante este sitio usted podr&aacute; acceder de manera r&aacute;pida y din&aacute;mica al Listado de Precios a utilizar en los distintos Sistemas de la Comercializadora de Servicios M&eacute;dicos Cubanos de Camag&uuml;ey.</div>
-                    <div class="fs-5 text-danger">Este Listado no es de dominio p&uacute;blico, por lo tanto, mantenga discreci&oacute;n sobre el mismo.</div>
-                    <div align="center" style="font-size:8px">&nbsp;</div>
-                    <div class="fs-5 text-secondary">Para comenzar el asistente de b&uacute;squeda de precios haga clic en el siguiente bot&oacute;n</div>
-                    <div align="center" style="font-size:16px">&nbsp;</div>
-                    <div align="center"><a class='class="w-25 btn btn-lg btn-primary' href='head1.php' role='button'>&nbsp;&nbsp;&nbsp;Comenzar proceso&nbsp;&nbsp;&nbsp;</a></div>
-                </div>
-                
-                <div class="col-sm"></div>
+                <form name="frmSelect1" method="post" action="">
+                    <div class="col-sm"></div>
+
+                    <div class="col-md-8" align="center">
+                        <div class="fs-6 text-secondary" align="left">&nbsp;Selecciona un servicio principal de la lista</div>
+                        <select name="cboEncabezado1" class="form-select form-select-lg" id="responsive_text" aria-label=".form-select-lg" required>
+                            <option disabled value="" selected hidden>...</option>
+                            <?php 
+                                while($rowEncabezado1 = $LISTA_ENCABEZADO_1->fetch_assoc()) 
+                                {
+                                    echo "<option value='" . $rowEncabezado1['cod1'] . "'>" . $rowEncabezado1['cod1'] . "&nbsp;-&nbsp;" . strtoupper($rowEncabezado1['descripcion']) . "</option>";
+                                } 
+                            ?>
+                        </select>
+
+                        <div align="center" style="font-size:4px">&nbsp;</div>
+                        
+                        <div class="row">
+                            <div class="col-sm"></div>
+                            <div class="col-md-6" align="right">
+                                <button class="btn btn-lg btn-primary" type="submit" name="head1">&nbsp;&nbsp;&nbsp;Siguiente&nbsp;&nbsp;&nbsp;</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <div class="col-sm"></div>
+
+                </form>
             </div>
             <!-- Body end -->
 

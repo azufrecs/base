@@ -2,20 +2,40 @@
     //include("class/security.php");
     include ("conn/conn.php");
 	error_reporting(0);
-	
+
+    if(isset($_GET['cod1'])){
+        $COD1 = $_GET['cod1'];
+        $QUERY_TITULO1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 WHERE codigo='$COD1'");
+        while($row = $QUERY_TITULO1->fetch_assoc()) 
+		{
+		$SUBNIVEL1_TITULO = $row['descripcion'];
+		}
+    } else {
+        echo"<script>window.location.href='head1.php'; </script>";
+    }
+    
+    if(isset($_GET['cod2'])){
+        $COD2 = $_GET['cod2'];
+        $QUERY_TITULO2 = $mysqli->query("SELECT * FROM tbl_encabezado_2 WHERE codigo_padre='$CODE1' AND codigo='$COD2'");
+        while($row = $QUERY_TITULO2->fetch_assoc()) 
+		{
+		$SUBNIVEL2_TITULO = $row['descripcion'];
+		}
+    }
+
 	// Start button configuration
     $BOTONES_NAVEGACION = "
 		<div class='col-md-12' align='center'>
 			<div class='btn-group btn-group-sm'>
 				<a class='btn btn-success' href='https://www.cmw.smcsalud.cu' role='button'>Web SMC</a>
+                <a class='btn btn-warning' href='head1.php' role='button'>Reiniciar proceso</a>
 				<a type='button' class='btn btn-danger' href='class\logout.php'>Logout [" . $_SESSION["user"] . "]</a>
 			</div>
 		</div>";
 	// Finish button configuration
 
-    $LISTA_ENCABEZADO_1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 ORDER BY codigo");
+    
 ?>
-
 <!doctype html>
 <html lang="es">
     <head>
@@ -61,19 +81,16 @@
             
             <!-- Body start -->
             <div class="row" align="center">
-                <div class="col-sm"></div>
-
-                <div class="col-md-8" align="justify">
-                    <div class="fs-4 text-secondary">Mediante este sitio usted podr&aacute; acceder de manera r&aacute;pida y din&aacute;mica al Listado de Precios a utilizar en los distintos Sistemas de la Comercializadora de Servicios M&eacute;dicos Cubanos de Camag&uuml;ey.</div>
-                    <div class="fs-5 text-danger">Este Listado no es de dominio p&uacute;blico, por lo tanto, mantenga discreci&oacute;n sobre el mismo.</div>
-                    <div align="center" style="font-size:8px">&nbsp;</div>
-                    <div class="fs-5 text-secondary">Para comenzar el asistente de b&uacute;squeda de precios haga clic en el siguiente bot&oacute;n</div>
-                    <div align="center" style="font-size:16px">&nbsp;</div>
-                    <div align="center"><a class='class="w-25 btn btn-lg btn-primary' href='head1.php' role='button'>&nbsp;&nbsp;&nbsp;Comenzar proceso&nbsp;&nbsp;&nbsp;</a></div>
-                </div>
-                
-                <div class="col-sm"></div>
+                <?php 
+                    if(isset($_GET['cod1']) && isset($_GET['cod2'])){
+                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong>&nbsp;->&nbsp;" . $SUBNIVEL2_TITULO . "</div>";
+                    } else {
+                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>$SUBNIVEL1_TITULO</strong></div>";
+                    }
+                ?>
             </div>
+            
+ 
             <!-- Body end -->
 
             <!-- Start footer -->

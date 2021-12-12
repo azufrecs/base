@@ -198,3 +198,6 @@ div#footer {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.alert {
+  display: inline-block;
+}

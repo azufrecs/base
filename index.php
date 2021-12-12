@@ -47,21 +47,21 @@
 					<div class="col" align="center"><i class="fas fa-money-check-alt fa-10x text-success"></i></div>
 				</div>	
 				
-				<div class="fs-3 text-secondary">Tarifario de precios, autent&iacute;quese</div>
+				<div class="display-6 text-secondary">Tarifario de precios, autent&iacute;quese</div>
 				<div align="center" style="font-size:20px">&nbsp;</div>
 				<!-- Header end -->
 
 				<form name="frmInicio" method="post" action="" class="form-signin">
 					<div class="form-floating">
-						<input type="text" class="form-control" name="txtLoginUsername" id="txtLoginUsername" placeholder="Usuario" autocomplete="off" required autofocus>
-						<label class="text-secondary" for="txtLoginUsername">Usuario</label>
+						<input type="text" class="form-control" name="txtLoginUsername" id="txtLoginUsername" placeholder="Usuario de proxy" autocomplete="off" required autofocus>
+						<label class="text-secondary" for="txtLoginUsername">Usuario de proxy</label>
 					</div>
 					
 					<div align="center" style="font-size:3px">&nbsp;</div>
 
 					<div class="form-floating">
-						<input type="password" class="form-control" name="txtPassUsername" id="txtPassUsername" placeholder="Contrase&ntilde;a" autocomplete="off" required>
-						<label class="text-secondary" for="txtPassUsername">Contrase&ntilde;a</label>
+						<input type="password" class="form-control" name="txtPassUsername" id="txtPassUsername" placeholder="Contrase&ntilde;a de proxy" autocomplete="off" required>
+						<label class="text-secondary" for="txtPassUsername">Contrase&ntilde;a de proxy</label>
 					</div>
 					
 					<div align="center" style="font-size:6px">&nbsp;</div>
