@@ -1,6 +1,8 @@
 <?php
     //include("class/security.php");
     include ("conn/conn.php");
+    setlocale (LC_TIME,"spanish");
+	header('Content-Type:text/html; charset=UTF-8');
 	error_reporting(0);
 
     $COD1OK=0;
@@ -15,6 +17,7 @@
 		$SUBNIVEL1_TITULO = $row['descripcion'];
 		}
         $COD1OK=1;
+        $CODIGO_FINAL = $COD1 . ".";
     } else {
         echo"<script>window.location.href='head1.php'; </script>";
     }
@@ -27,6 +30,7 @@
 		$SUBNIVEL2_TITULO = $row['descripcion'];
 		}
         $COD2OK=1;
+        $CODIGO_FINAL = $COD2 . ".";
     }
 
     if(isset($_GET['cod3'])){
@@ -37,8 +41,10 @@
 		$SUBNIVEL3_TITULO = $row['descripcion'];
 		}
         $COD3OK=1;
+        $CODIGO_FINAL = $COD3 . ".";
     }
 
+    $CONSULTA_MYSQL = $mysqli->query("SELECT * FROM tbl_servicios WHERE codigo LIKE '$CODIGO_FINAL%' ORDER BY codigo");
 	// Start button configuration
     $BOTONES_NAVEGACION = "
 		<div class='col-md-12' align='center'>
@@ -49,8 +55,6 @@
 			</div>
 		</div>";
 	// Finish button configuration
-
-    
 ?>
 <!doctype html>
 <html lang="es">
@@ -71,6 +75,12 @@
         <link href="../css/datepicker.min" rel="stylesheet" media="screen">
         <link href="../css/fontawesome.css" rel="stylesheet" media="screen">
         <link href="../css/signin.css" rel="stylesheet" media="screen">
+        <!-- Definiendo el alto de la tabla -->
+		<style type="text/css"> 
+			thead tr th {position: sticky; top: 0; z-index: 10;}
+			.table-responsive {height:336px;}
+        </style> 
+		<!-- Definiendo el alto de la tabla -->
         <!-- Finish of links to CSS files -->
 
         <!-- Start of links to JS files -->
@@ -110,6 +120,45 @@
                             break;		
                     }
                 ?>
+
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<div class="table-responsive">
+							<table class='table table-hover table-sm' id='testTable'>
+								<thead class="table-success text-white">
+									<tr>
+										<th class='fs-6 ajustar text-start'>&nbsp;C&oacute;digo</th>
+										<th class='fs-6 ajustar text-start'>&nbsp;Servicio</th>
+										<th class='fs-6 ajustar text-start'>&nbsp;Tipo</th>
+										<th class='fs-6 ajustar text-middle'>&nbsp;Unidad</th>
+										<th class='fs-6 ajustar text-end'>&nbsp;Precio USD</th>
+										<th class='fs-6 ajustar text-end'>&nbsp;Precio CUP</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+										if(mysqli_num_rows($CONSULTA_MYSQL) == 0)
+										{
+											echo '<tr><td colspan="8">&nbsp;No se encontraron resultados.</td></tr>';
+										} else {
+											while($row = mysqli_fetch_assoc($CONSULTA_MYSQL))
+											{												
+												echo "<tr>";
+													echo "<td class='align-middle fs-6 ajustar' align='left'>" . $row['codigo'] . "</td>";
+													echo "<td class='align-middle fs-6 ajustar' align='left'>" . utf8_encode($row['descripcion']) . "</td>";
+													echo "<td class='align-middle fs-6 ajustar' align='left'>" . $row['denominacion'] . "</td>";
+													echo "<td class='align-middle fs-6 ajustar' align='center'>" . $row['unidad'] . "</td>";
+													echo "<td class='align-middle fs-6 ajustar' align='right'>" . number_format($row['precio_new_usd'], 2, '.', '') . "</td>";
+													echo "<td class='align-middle fs-6 ajustar' align='right'>" . number_format($row['precio_new_cup'], 2, '.', '') . "</td>";
+												echo "</tr>";
+											}
+										}
+									?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>	
             </div>
             
             <!-- Body end -->

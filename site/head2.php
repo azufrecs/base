@@ -101,7 +101,7 @@
                             <?php 
                                 while($rowEncabezado2 = $LISTA_ENCABEZADO_2->fetch_assoc()) 
                                 {
-                                    echo "<option value='" . $rowEncabezado2['cod2'] . "'>" . $rowEncabezado2['cod2'] . "&nbsp;-&nbsp;" . strtoupper($rowEncabezado2['descripcion']) . "</option>";
+                                    echo "<option value='" . $rowEncabezado2['cod2'] . "'>" . $rowEncabezado2['cod2'] . "&nbsp;-&nbsp;" . utf8_encode(strtoupper($rowEncabezado2['descripcion'])) . "</option>";
                                 } 
                             ?>
                         </select>
