@@ -1,6 +1,6 @@
 <?php
-    //include("class/security.php");
-    include ("conn/conn.php");
+    include("../class/security.php");
+    include ("../conn/conn.php");
     setlocale (LC_TIME,"spanish");
 	header('Content-Type:text/html; charset=UTF-8');
 	error_reporting(0);
@@ -19,7 +19,7 @@
         $COD1OK=1;
         $CODIGO_FINAL = $COD1 . ".";
     } else {
-        echo"<script>window.location.href='head1.php'; </script>";
+        echo"<script>window.location.href='index.php'; </script>";
     }
     
     if(isset($_GET['cod2'])){
@@ -50,8 +50,9 @@
 		<div class='col-md-12' align='center'>
 			<div class='btn-group btn-group-sm'>
 				<a class='btn btn-success' href='https://www.cmw.smcsalud.cu' role='button'>Web SMC</a>
-                <a class='btn btn-warning' href='head1.php' role='button'>Reiniciar proceso</a>
-				<a type='button' class='btn btn-danger' href='class\logout.php'>Logout [" . $_SESSION["user"] . "]</a>
+                <a class='btn btn-warning' href='index.php' role='button'>Reiniciar proceso</a>
+				<a class='btn btn-warning' href='..' role='button'>Men&uacute;</a>
+				<a type='button' class='btn btn-danger' href='../class/logout.php'>Logout [" . $_SESSION["user"] . "]</a>
 			</div>
 		</div>";
 	// Finish button configuration
@@ -66,15 +67,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Finish required meta tags for Bootstrap -->
 
-        <link rel="icon" href="../img/favicon.svg">
+        <link rel="icon" href="../../img/favicon.svg">
         <title>Tarifario de Precios</title>
 
         <!-- Start of links to CSS files -->
-        <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
-        <link href="../css/main.css" rel="stylesheet" media="screen">
-        <link href="../css/datepicker.min" rel="stylesheet" media="screen">
-        <link href="../css/fontawesome.css" rel="stylesheet" media="screen">
-        <link href="../css/signin.css" rel="stylesheet" media="screen">
+        <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../../css/main.css" rel="stylesheet" media="screen">
+        <link href="../../css/datepicker.min" rel="stylesheet" media="screen">
+        <link href="../../css/fontawesome.css" rel="stylesheet" media="screen">
+        <link href="../../css/signin.css" rel="stylesheet" media="screen">
         <!-- Definiendo el alto de la tabla -->
 		<style type="text/css"> 
 			thead tr th {position: sticky; top: 0; z-index: 10;}
@@ -84,11 +85,11 @@
         <!-- Finish of links to CSS files -->
 
         <!-- Start of links to JS files -->
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/jquery-3.6.0.js"></script>
-        <script src="../js/datepicker.min.js"></script>
-        <script src="../js/main.js"></script>
-        <script src="../js/fontawesome.js"></script>
+        <script src="../../js/bootstrap.js"></script>
+        <script src="../../js/jquery-3.6.0.js"></script>
+        <script src="../../js/datepicker.min.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/fontawesome.js"></script>
         <!-- Finish of links to JS files -->
     </head>
 

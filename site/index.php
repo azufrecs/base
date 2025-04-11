@@ -1,8 +1,10 @@
 <?php
-    //include("class/security.php");
+    include("class/security.php");
     include ("conn/conn.php");
-	error_reporting(0);
-	
+	//error_reporting(0);
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
 	// Start button configuration
     $BOTONES_NAVEGACION = "
 		<div class='col-md-12' align='center'>
@@ -13,7 +15,7 @@
 		</div>";
 	// Finish button configuration
 
-    $LISTA_ENCABEZADO_1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 ORDER BY codigo");
+    $LISTA_ENCABEZADO_1 = $mysqli->query("SELECT * FROM tbl_encabezado_1 ORDER BY cod1");
 ?>
 
 <!doctype html>
@@ -65,15 +67,27 @@
 
                 <div class="col-md-8" align="justify">
                     <div class="fs-4 text-secondary">Mediante este sitio usted podr&aacute; acceder de manera r&aacute;pida y din&aacute;mica al Listado de Precios a utilizar en los distintos Sistemas de la Comercializadora de Servicios M&eacute;dicos Cubanos de Camag&uuml;ey.</div>
-                    <div class="fs-5 text-danger">Este Listado no es de dominio p&uacute;blico, por lo tanto, mantenga discreci&oacute;n sobre el mismo.</div>
+                    <div class="fs-5 text-danger">Estos Listados no son de dominio p&uacute;blico, por lo tanto, mantenga discreci&oacute;n sobre los mismos.</div>
                     <div align="center" style="font-size:8px">&nbsp;</div>
-                    <div class="fs-5 text-secondary">Para comenzar el asistente de b&uacute;squeda de precios haga clic en el siguiente bot&oacute;n</div>
-                    <div align="center" style="font-size:16px">&nbsp;</div>
-                    <div align="center"><a class='class="w-25 btn btn-lg btn-primary' href='head1.php' role='button'>&nbsp;&nbsp;&nbsp;Comenzar proceso&nbsp;&nbsp;&nbsp;</a></div>
+                    <div align="center" class="fs-5 text-secondary">Seleccione el Listado de Precios a consultar</div>
                 </div>
                 
                 <div class="col-sm"></div>
             </div>
+			<div align="center" style="font-size:8px">&nbsp;</div>
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-md-3" align="center">
+					<a class='btn btn-success font-monospace' href='services/' role='button'><i class="fas fa-4x fa-user-md"></i><br><br><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Servicios&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></a>
+				</div>
+			
+				<div class="col-md-3" align="center">
+					<a class='btn btn-primary font-monospace' href='medicines/' role='button'><i class="fas fa-4x fa-pills"></i><br><br><h4>&nbsp;&nbsp;&nbsp;Medicamentos&nbsp;&nbsp;&nbsp;</h4></a>
+				</div>	
+				<div class="col-sm"></div>
+			</div>
+			
+			
             <!-- Body end -->
 
             <!-- Start footer -->

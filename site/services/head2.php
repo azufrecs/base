@@ -1,6 +1,6 @@
 <?php
-    //include("class/security.php");
-    include ("conn/conn.php");
+    include("../class/security.php");
+    include ("../conn/conn.php");
 	error_reporting(0);
 
     if(isset($_GET['cod1'])){
@@ -11,7 +11,7 @@
 		$TITULO_COD1 = $row['descripcion'];
 		}
     } else {
-        echo"<script>window.location.href='head1.php'; </script>";
+        echo"<script>window.location.href='index.php'; </script>";
     } 
 	
     $LISTA_ENCABEZADO_2 = $mysqli->query("SELECT * FROM tbl_encabezado_2 WHERE cod1 ='$COD1' ORDER BY cod1");
@@ -21,7 +21,8 @@
 		<div class='col-md-12' align='center'>
 			<div class='btn-group btn-group-sm'>
 				<a class='btn btn-success' href='https://www.cmw.smcsalud.cu' role='button'>Web SMC</a>
-				<a type='button' class='btn btn-danger' href='class\logout.php'>Logout [" . $_SESSION["user"] . "]</a>
+				<a class='btn btn-warning' href='..' role='button'>Men&uacute;</a>
+				<a type='button' class='btn btn-danger' href='../class/logout.php'>Logout [" . $_SESSION["user"] . "]</a>
 			</div>
 		</div>";
 	// Finish button configuration
@@ -37,23 +38,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Finish required meta tags for Bootstrap -->
 
-        <link rel="icon" href="../img/favicon.svg">
+        <link rel="icon" href="../../img/favicon.svg">
         <title>Tarifario de Precios</title>
 
         <!-- Start of links to CSS files -->
-        <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
-        <link href="../css/main.css" rel="stylesheet" media="screen">
-        <link href="../css/datepicker.min" rel="stylesheet" media="screen">
-        <link href="../css/fontawesome.css" rel="stylesheet" media="screen">
-        <link href="../css/signin.css" rel="stylesheet" media="screen">
+        <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="../../css/main.css" rel="stylesheet" media="screen">
+        <link href="../../css/datepicker.min" rel="stylesheet" media="screen">
+        <link href="../../css/fontawesome.css" rel="stylesheet" media="screen">
+        <link href="../../css/signin.css" rel="stylesheet" media="screen">
         <!-- Finish of links to CSS files -->
 
         <!-- Start of links to JS files -->
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/jquery-3.6.0.js"></script>
-        <script src="../js/datepicker.min.js"></script>
-        <script src="../js/main.js"></script>
-        <script src="../js/fontawesome.js"></script>
+        <script src="../../js/bootstrap.js"></script>
+        <script src="../../js/jquery-3.6.0.js"></script>
+        <script src="../../js/datepicker.min.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/fontawesome.js"></script>
         <!-- Finish of links to JS files -->
     </head>
 
@@ -109,10 +110,8 @@
                         <div align="center" style="font-size:4px">&nbsp;</div>
                         
                         <div class="row">
-                            <div class="col-sm"></div>
-                            <div class="col-md-6" align="right">
-                                <a class='class="w-25 btn btn-lg btn-warning' href='head1.php' role='button'>&nbsp;&nbsp;&nbsp;Reiniciar proceso&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-lg btn-primary" type="submit" name="head2">&nbsp;&nbsp;&nbsp;Siguiente&nbsp;&nbsp;&nbsp;</button>
-                            </div>
+                            <div class="col-md-12" align="right">
+                                <a class='class="w-25 btn btn-lg btn-warning' href='index.php' role='button'>&nbsp;&nbsp;&nbsp;Reiniciar proceso&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-lg btn-primary" type="submit" name="head2">&nbsp;&nbsp;&nbsp;Siguiente&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                     
